@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Traiteurs{% endblock %}
+
+{% block content %}
+
+<section>
+    <div class="partie-a">
+        <div class="space-traiteurs1">
+            <div class="effet-ombre">
+                <div class="description">
+                    <h1>Nos traiteurs</h1>
+                    <p>Découvrez nos traiteurs professionnels pour vos evénements, mariages, bapteme et receptions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="espace-traiteurs2">
+        <div class="titre-h2">
+            <h2>Filtres</h2>
+        </div>
+        <div class="option1">
+            <div class="choix">
+                <p class="p-titres">specialités</p>
+                <select name="specialit" id="specialit">
+                    <option value="specialité">Toutes les specialités</option>
+                </select>
+            </div>
+            <div class="choix">
+                <p class="p-titrestrai">traiteurs</p>
+                <select name="traiteurs" id="traiteurs">
+                    <option value="traiteur">Tous les traiteurs</option>
+                </select>
+            </div>
+            <div class="btn-fi">
+                <button class="btn-filtrer"><i class="fa-solid fa-filter"></i>Filtrer</button>
+                <button class="btn-reinitialiser"><i class="fa-solid fa-arrows-rotate"></i>reinitialiser</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="prestation">
+    {% if les_traiteurs %}
+        {% for f in les_traiteurs %}
+            <div class="plat-image1">
+                <img src="{{ f.image }}" alt="image1-plat">
+                <a class="verifie"><i class="fa-regular fa-circle-check"></i>verifié</a>
+                <div class="t-renseignees">
+                    <div class="texte-ren">
+                        <p class="p-titre">{{ f.date_creation }}</p>
+                        <p class="desc">{{ f.adresse }}</p>
+                        <p class="textex-gras">Spéccialités</p>
+                        <p><span>{{ f.specialite }}</span> <span></span></p>
+                        <p class="num"><i class="fa-solid fa-phone"></i>{{ f.telephone }}</p>
+                    </div>
+                    <div class="text-ren">
+                        <p class="etoiles-etoile">⭐0.0</p>
+                        <a href="{% url 'details' f.id %}" class="button-verifie">Voir le profil</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</section>
+
+<section class="commandes">
+    <div class="effet-ombre2">
+        <h1>Vous etes traiteurs?</h1>
+        <p>Rejoignez notre réseau et développer votre activité évenementielle!</p>
+        <div class="boutton">
+            <button>Devenir traiteur</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="renseignement">
+        <div class="infos">
+            <div class="propos">
+                <h6>a propos</h6>
+                <p>qui sommes-nous <br> contact <br> Mentions légales <br> Politiques de confidentialité</p>
+            </div>
+            <div class="ser">
+                <h6>Services</h6>
+                <p>Traiteurs <br> Restaurant <br> Cours </p>
+            </div>
+            <div class="espace-pro">
+                <h6>Espace Pro</h6>
+                <p>Devenir partenaire <br> Connexion <br> FAQ professionnels</p>
+            </div>
+            <div class="contact">
+                <h6>Contact</h6>
+                <p>Star buffet <br> Dakar, Sénégal <br> Tel:770000000 <br> Email:starbuffet@gmail.com</p>
+            </div>
+        </div>
+        <hr>
+        <div class="footer-a">
+            <p>2025 star buffet. Tous droits réservés.</p>
+        </div>
+    </div>
+</footer>
+
+{% endblock %}

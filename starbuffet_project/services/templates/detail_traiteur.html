@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+  {% load static %}
+    {%block title%}Traiteurs{%endblock%}
+    {%block content%}
+    <section>
+        {% if les_traiteurs %}
+         {% for f in les_traiteurs %}
+        <div class="div-principale">
+            <div class="image">
+                
+               
+                   <p class="badge">⭐0.0/5
+                      <a class="verifie"><i class="fa-regular fa-circle-check"></i>verifié</a></p>
+            </div>
+            <div class="presentation-1">
+              
+                  <div class="texte-renseignements">
+                    <p class="p-titles">A propos</p>
+                     <p class="description">{{f.description}}</p>
+                  </div>
+                  <div class="specialitees">
+                    <p class="p-titles">Spécialités</p>
+        
+                
+                    <p > <span>{{f.specialite}}</span> <span>{{f.specialite}}</span></p>
+                  </div>
+                 
+                  
+                  <div class="services-proposees">
+                    
+                       <p class="p-titles">Services</p>
+                        <div class="colonnes">
+                           <div class="col1">
+                               <p><i class="fa-solid fa-check"></i>Mariage</p>
+                               <p><i class="fa-solid fa-check"></i>Cocktails</p>
+                           </div>
+                           <div class="col2">
+                               <p> <i class="fa-solid fa-check"></i>Anniversaire</p>
+                               <p><i class="fa-solid fa-check"></i>Cuisine sur mesure</p>
+                           </div>
+                        </div>
+                  </div>
+
+        {% endfor %}
+    {% endif %}
+    </section>
+
+            </div>
+       
+            <div class="presentation-2">
+                <div class="contacts">
+                    <p class="p-titles">Contacts</p>
+                   <p> <i class="fa-solid fa-location-dot"></i>Minima eum aliquip a</p>
+                     <p><i class="fa-solid fa-phone"></i>+1(684) 758-7777</p>
+                    <p> <i class="fa-solid fa-envelope"></i>dss@ds.ds</p>
+                </div>
+                <div class="experience">
+                    <p class="p-titles">Experience</p>
+                   <p><i class="fa-solid fa-calendar"></i>1979ans d'expérience </p>
+                </div>
+                <div class="langues">
+                     <p class="p-titles">Langues parlées</p>
+                     <p > <span>Italien</span> <span>Francais</span> <span>Arabe</span></p>
+                     
+                </div>
+                <div class="btn-contacter">
+                    <button><i class="fa-solid fa-phone"></i>Contacter</button>
+                </div>
+            </div>
+
+        </div>
+
+    
+{%endblock%}
