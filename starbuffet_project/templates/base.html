@@ -24,10 +24,18 @@
         <li><a href="traiteurs.html">Traiteurs</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
+      
       <div class="btn">
-        <button class="boutton-connexion">Connexion</button>
-        <button class="boutton-inscription">Inscription</button>
+        <button class="boutton-connexion" type="submit">Connexion</button>
+        <button class="boutton-inscription" type="submit">Inscription</button>
+        <form  action = "{%url 'logout' %}" method="post">
+            {%csrf_token%}
+         <button class="boutton-connexion" type="submit">Deconnexion</button>
+        </form>
     </div>
+    
+        
+
     
     </header>
      

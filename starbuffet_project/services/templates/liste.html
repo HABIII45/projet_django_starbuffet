@@ -49,7 +49,9 @@
         {% for f in les_traiteurs %}
             <div class="plat-image1">
                 <img src="{{ f.image }}" alt="image1-plat">
-                <a class="verifie"><i class="fa-regular fa-circle-check"></i>verifié</a>
+                {% if f.est_actif%}
+                 <a class="verifie"><i class="fa-regular fa-circle-check"></i>verifié</a>
+                 {%endif%}
                 <div class="t-renseignees">
                     <div class="texte-ren">
                         <p class="p-titre">{{ f.date_creation }}</p>

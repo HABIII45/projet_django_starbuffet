@@ -3,10 +3,21 @@
     {%block title%}Traiteurs{%endblock%}
     {%block content%}
     <section>
-        {% if les_traiteurs %}
-         {% for f in les_traiteurs %}
-        <div class="div-principale">
-            <div class="image">
+       
+          <div class="div-principale">
+            <div class="image" style="  
+                 background: url('{{le_traiteur.image}}');
+                 background-size: cover;
+   
+                 width: 1200px;
+                 height: 300px;
+                 position: relative;
+                 background-position: center;
+                 margin-left: 40px;
+                 border-radius: 10px;
+                 margin-top: 20px;"
+
+ >"
                 
                
                    <p class="badge">⭐0.0/5
@@ -16,13 +27,13 @@
               
                   <div class="texte-renseignements">
                     <p class="p-titles">A propos</p>
-                     <p class="description">{{f.description}}</p>
+                     <p class="description">{{le_traiteur.description}}</p>
                   </div>
                   <div class="specialitees">
                     <p class="p-titles">Spécialités</p>
         
                 
-                    <p > <span>{{f.specialite}}</span> <span>{{f.specialite}}</span></p>
+                    <p > <span>{{le_traiteur.specialite}}</span> <span>{{le_traiteur.specialite}}</span></p>
                   </div>
                  
                   
@@ -41,26 +52,24 @@
                         </div>
                   </div>
 
-        {% endfor %}
-    {% endif %}
-    </section>
+     
 
             </div>
        
             <div class="presentation-2">
                 <div class="contacts">
                     <p class="p-titles">Contacts</p>
-                   <p> <i class="fa-solid fa-location-dot"></i>Minima eum aliquip a</p>
-                     <p><i class="fa-solid fa-phone"></i>+1(684) 758-7777</p>
-                    <p> <i class="fa-solid fa-envelope"></i>dss@ds.ds</p>
+                   <p> <i class="fa-solid fa-location-dot"></i>{{le_traiteur.adresse}}</p>
+                     <p><i class="fa-solid fa-phone"></i>{{le_traiteur.telephone}}</p>
+                    <p> <i class="fa-solid fa-envelope"></i>{{le_traiteur.email}}</p>
                 </div>
                 <div class="experience">
                     <p class="p-titles">Experience</p>
-                   <p><i class="fa-solid fa-calendar"></i>1979ans d'expérience </p>
+                   <p><i class="fa-solid fa-calendar"></i>{{le_traiteur.date_creation}} </p>
                 </div>
                 <div class="langues">
                      <p class="p-titles">Langues parlées</p>
-                     <p > <span>Italien</span> <span>Francais</span> <span>Arabe</span></p>
+                     <p > <span>{{le_traiteur.specialite}}</span> <span>{{le_traiteur.specialite}}</span> <span>{{le_traiteur.specialite}}</span></p>
                      
                 </div>
                 <div class="btn-contacter">
@@ -70,5 +79,6 @@
 
         </div>
 
-    
+      
+</section>
 {%endblock%}
