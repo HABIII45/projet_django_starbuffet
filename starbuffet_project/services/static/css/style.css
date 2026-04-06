@@ -95,6 +95,11 @@ header .btn .boutton-inscription  {
    
   
 }
+.btn a{
+  text-decoration: none;
+  color: #111827;
+
+}
 
 .partie-a {
   background: url(../images/banner-caterers.jpg);
@@ -2401,3 +2406,7 @@ font-size:small;
     text-align: center;
 }
 }
+
+
+
+

@@ -56,3 +56,4 @@ class TraiteurFormulaire(forms.Form):
         widget=forms.TextInput(attrs={'placholder' :"donner une image"})
         
     )
+    

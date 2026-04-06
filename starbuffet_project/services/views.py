@@ -3,6 +3,8 @@ from .models import Traiteur
 from .forms import TraiteurFormulaire
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 
 # Create your views here.
 def liste_traiteurs(request):
@@ -62,3 +64,19 @@ def Formulaire(request):
             'page_acceuil':"consulter les contacts "
         }
     return render(request,'form_traiteur.html',context)
+
+
+def Inscription(request):
+    if request.method == 'POST':
+        form=UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request,user)
+            redirect('traiteurs')
+    else:
+        form=UserCreationForm()
+        context={
+            'form':form
+        }
+    return render(request,'registration/signup.html',context)
+  
