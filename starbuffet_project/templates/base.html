@@ -23,13 +23,13 @@
         <li><a href="index.html">Acceuil</a></li>
         <li><a href="#">Restaurant</a></li>
         <li><a href="#">cours de cuisine</a></li>
-        <li><a href="traiteurs.html">Traiteurs</a></li>
+        <li><a href="{% url 'traiteurs'%}">Traiteurs</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
       
-     
+      <ul>
         {%if user.is_authenticated%}
-         <li>{{user.usernanme}}</li>
+         <li>{{user.username}}</li>
          <form  action = "{%url 'logout' %}" method="post">
 
             {%csrf_token%}
@@ -38,8 +38,9 @@
         {%else%}
           <div class="btn">
            <a  class="boutton-connexion"  href="{% url 'login'%}">Connexion</a>
-           <a class="boutton-inscription" href="{% url 'inscription'%}">Inscription</a></button>
+           <a class="boutton-inscription" href="{% url 'inscription'%}">Inscription</a>
         {%endif%}
+      </ul>
     </div>
     
         

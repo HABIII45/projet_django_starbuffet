@@ -122,4 +122,4 @@ STATICFILES = [
 ]
 
 LOGIN_REDIRECT_URL = "ajouter_traiteur"
-LOGOUT_REDIRECT_URL = "auth/login"
+LOGOUT_REDIRECT_URL = "/compte/login"

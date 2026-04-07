@@ -14,6 +14,7 @@
     margin: 0;
     margin-right: 0;
     
+    overflow-y: auto;
    
   }
   
@@ -33,6 +34,7 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 55px;
+  
  
 
 }
@@ -40,14 +42,16 @@ ul {
     
     display: flex;
     list-style: none;
-    width: 50%;
+    
    align-items: center;
     justify-content: space-between;
+    gap: 20px;
     
 }
 ul li a{
   color: black;
   text-decoration: none;
+  white-space: nowrap; /* empêche le texte de se casser sur plusieurs lignes */
 }
 header ul li a:hover{
    color: orange;
@@ -101,18 +105,14 @@ header .btn .boutton-inscription  {
 
 }
 
-.partie-a {
-  background: url(../images/banner-caterers.jpg);
-  position: relative;
-  height: 550px;
-  width: 100%;
-   background-size: cover; /*permet de garder la taille initiale d un element */
-  
-   
-   background-position: bottom;
-  
-    
 
+   
+ .partie-a {
+  background: url(../images/banner-caterers.jpg) no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  min-height: 400px; /* ou la hauteur que tu veux */
+  position: relative;
 }
 
 .partie-a .effet-ombre{
@@ -218,9 +218,11 @@ header .btn .boutton-inscription  {
 }
 .partie-b .service {
   
-  height: 250px;
+  height: auto;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   justify-content: space-between;
   padding: 20px  10px;
  
@@ -244,7 +246,7 @@ header .btn .boutton-inscription  {
   background-color: #ffb30065;
   border-radius: 10%;
   width: 850px;
-  height: 195px;
+  flex-wrap: wrap;
   padding:15px 20px;
   margin-right: 2%;
   
@@ -253,7 +255,7 @@ header .btn .boutton-inscription  {
   background-color:#fff3e0 ;
   border-radius: 10%;
   width: 850px;
-  height: 195px;
+  flex-wrap: wrap;
   padding:15px 20px;
   margin-right: 2%;
 }
@@ -261,7 +263,7 @@ header .btn .boutton-inscription  {
   background-color: #ffb30065;
   border-radius: 10%;
   width: 850px;
-  height: 195px;
+  flex-wrap: wrap;
   padding:15px 40px;
   margin-right: 2%;
 }
@@ -444,8 +446,9 @@ background-color: white;
   color: whitesmoke;
   text-align: center;
 }
-.commandes .boutton button {
-  color: orangered;
+.commandes .boutton  a{
+  color: orangered !important;
+ 
   border: 1px solid orangered;
   background-color: white;
   border-radius: 10px;
@@ -768,10 +771,12 @@ background-color: white;
 
 }
 .formulaire{
-  height: 1800px;
+  height: auto;
+  min-height: 400px;
   width: 100%;
    padding: 20px;
   background-color: #fff3e0;
+  padding-bottom: 50px;
 }
 .formulaire .formulaire-sous{
   display: block;
@@ -893,28 +898,20 @@ background-color: white;
   margin-left: 750px;
   cursor: pointer;
 }
- .prestation{
+ /*.prestation{
   width: 100%;
   height: 500px;
- 
-  
   justify-content: space-between;
   background-color: #fff3e0;
+}*/
+.prestation{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .prestation .plat-image2{
-   padding: 100px 80px ;
-  border-radius: 10px;
-  height: 50px;
-  width: 1000px;
-  margin-left: 150px;
-  margin-top: -40px;
-  background-color: white;
-  
-  
-}
-
-.prestation .plat-image1 {
     padding: 20px;                 /* espace intérieur */
     border-radius: 10px;
     width: 300px;                   /* largeur fixe */
@@ -923,8 +920,18 @@ background-color: white;
     margin: 20px;                   /* espace autour de la carte */
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     box-sizing: border-box;         /* inclut le padding dans la largeur */
-    overflow-wrap: break-word;      /* évite que le texte dépasse */
+    overflow-wrap: break-word; 
+    gap: 20px;     /* évite que le texte dépasse */
+} 
+
+.plat-image1{
+  width: 300px;
+  height: auto;
+  margin: 10px;
+  position: relative; /* important */
 }
+
+
 .t-renseignees{
   display: grid;
    grid-template-columns: repeat(2,1fr);
@@ -938,28 +945,15 @@ background-color: white;
 
 }
 
-.plat-image1 img {
-position: relative;
- margin-top: -150px;
-  padding: 50px 70px;
- background-size: cover;
- margin-bottom: -60px;
- margin-left: -150px;
- height: 300px;
- width: 425px;
- }
-.plat-image2 img {
-position: relative;
- margin-top: -150px;
-  padding: 50px 80px;
- background-size: cover;
- margin-bottom: -60px;
- margin-left: -170px;
- height: 300px;
- width: 455px;
- 
- }
 
+
+.plat-image1 img{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin: 0; /* supprimer margin négatif */
+  padding: 0;
+}
  .plat-image1 a {
   
   border-radius:15px ;
@@ -979,22 +973,7 @@ position: relative;
 
  
  }
- .plat-image2 a {
-  
-  border-radius:15px ;
-  object-fit: cover;
-  position: absolute;
-  padding: 1px  5px;
-  font-size: small;
-  color: #001402f1;
-  background-color:rgba(14, 175, 54, 0.5);
-  width: 100px;
-  height: 25px;
-  margin-left: -195px;
- margin-top: -90px;
- text-align: center;
  
- }
  .text-ren .button-verifie{
   border: none;
   box-shadow: 1px 1px 1px 1px rgb(1, 1, 31);
@@ -1010,6 +989,10 @@ position: relative;
  
  
 }
+
+
+
+
 .etoiles-etoile {
   position: absolute;
   margin-left: 400px;
@@ -1045,7 +1028,7 @@ position: relative;
 .div-principale{
   background: url(images/pattern-background.svg);
   height: 950px;
-  width: 100%;
+  width: auto;
   display: grid;
   grid-template-columns: repeat(3,1fr);
  position: relative;
@@ -1849,6 +1832,7 @@ position: relative;
   position: relative;
   height:350px;
   width: 100%;
+  
    background-size: cover; /*permet de garder la taille initiale d un element */
   
     background-position: bottom;

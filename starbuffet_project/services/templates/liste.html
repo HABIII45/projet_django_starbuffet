@@ -5,69 +5,68 @@
 
 {% block content %}
 
-<section>
-    <div class="partie-a">
-        <div class="space-traiteurs1">
-            <div class="effet-ombre">
-                <div class="description">
-                    <h1>Nos traiteurs</h1>
-                    <p>Découvrez nos traiteurs professionnels pour vos evénements, mariages, bapteme et receptions</p>
-                </div>
+<!-- Section introduction -->
+<section class="partie-a">
+    <div class="space-traiteurs1">
+        <div class="effet-ombre">
+            <div class="description text-center py-5">
+                <h1>Nos traiteurs</h1>
+                <p>Découvrez nos traiteurs professionnels pour vos événements, mariages, baptêmes et réceptions</p>
             </div>
         </div>
     </div>
 </section>
 
-<section>
-    <div class="espace-traiteurs2">
-        <div class="titre-h2">
+<!-- Section filtres -->
+<section class="espace-traiteurs2 py-4">
+    <div class="container">
+        <div class="titre-h2 mb-3">
             <h2>Filtres</h2>
         </div>
-        <div class="option1">
+        <div class="option1 d-flex flex-wrap align-items-end gap-3">
             <div class="choix">
-                <p class="p-titres">specialités</p>
-                <select name="specialit" id="specialit">
-                    <option value="specialité">Toutes les specialités</option>
+                <p class="p-titres mb-1">Spécialités</p>
+                <select name="specialit" id="specialit" class="form-select">
+                    <option value="specialité">Toutes les spécialités</option>
                 </select>
             </div>
             <div class="choix">
-                <p class="p-titrestrai">traiteurs</p>
-                <select name="traiteurs" id="traiteurs">
+                <p class="p-titrestrai mb-1">Traiteurs</p>
+                <select name="traiteurs" id="traiteurs" class="form-select">
                     <option value="traiteur">Tous les traiteurs</option>
                 </select>
             </div>
             <div class="btn-fi">
-                <button class="btn-filtrer"><i class="fa-solid fa-filter"></i>Filtrer</button>
-                <button class="btn-reinitialiser"><i class="fa-solid fa-arrows-rotate"></i>reinitialiser</button>
+                <button class="btn btn-primary"><i class="fa-solid fa-filter"></i> Filtrer</button>
+                <button class="btn btn-secondary"><i class="fa-solid fa-arrows-rotate"></i> Réinitialiser</button>
             </div>
         </div>
     </div>
 </section>
 
-<section class="prestation">
-    {% if les_traiteurs %}
+<!-- Section cartes traiteurs -->
+<div class="container mt-4">
+    <div class="row">
         {% for f in les_traiteurs %}
-            <div class="plat-image1">
-                <img src="{{ f.image }}" alt="image1-plat">
-                {% if f.est_actif%}
-                 <a class="verifie"><i class="fa-regular fa-circle-check"></i>verifié</a>
-                 {%endif%}
-                <div class="t-renseignees">
-                    <div class="texte-ren">
-                        <p class="p-titre">{{ f.date_creation }}</p>
-                        <p class="desc">{{ f.adresse }}</p>
-                        <p class="textex-gras">Spéccialités</p>
-                        <p><span>{{ f.specialite }}</span> <span></span></p>
-                        <p class="num"><i class="fa-solid fa-phone"></i>{{ f.telephone }}</p>
-                    </div>
-                    <div class="text-ren">
-                        <p class="etoiles-etoile">⭐0.0</p>
-                        <a href="{% url 'details' f.id %}" class="button-verifie">Voir le profil</a>
-                    </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ f.image }}" class="card-img-top" style="height:200px; object-fit:cover;" alt="image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ f.nom }}</h5>
+                    <p class="card-text"><strong>Spécialité :</strong> {{ f.specialite }}</p>
+                    <p class="card-text">📞 {{ f.telephone }}</p>
+                    <span class="badge bg-success">Vérifié</span>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{%url 'details' f.id %}" class="btn btn-dark">Voir le profil</a>
                 </div>
             </div>
+        </div>
         {% endfor %}
-    {% endif %}
+    </div>
+</div>
+
+<!-- Section commandes -->
 </section>
 
 <section class="commandes">
@@ -75,11 +74,12 @@
         <h1>Vous etes traiteurs?</h1>
         <p>Rejoignez notre réseau et développer votre activité évenementielle!</p>
         <div class="boutton">
-            <button>Devenir traiteur</button>
+            <a href="{%url 'ajouter_traiteur' %}">Devenir traiteur</a>
         </div>
     </div>
 </section>
 
+<!-- Footer -->
 <footer>
     <div class="renseignement">
         <div class="infos">
